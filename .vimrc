@@ -11,7 +11,7 @@ noremap <C-k> <C-w>j
 noremap <C-i> <C-w>k
 noremap <C-l> <C-w>l
 nnoremap <space> za
-nnoremap <C-m> :bn<CR>
+nnoremap <tab> :bn<CR>
 nnoremap <C-s-tab> :bp<CR>
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -62,9 +62,10 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 
 "set list lcs=tab:\|\
+set t_Co=256
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme="atomic"
-let g:airline_powerline_fonts = 1
+"let g:airline_theme="solarized"
+let g:airline_powerline_fonts = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
   endif
