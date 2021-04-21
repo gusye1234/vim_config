@@ -1,5 +1,6 @@
 let $VIRTUAL_ENV = $CONDA_PREFIX
 
+set encoding=UTF-8
 set nu
 highlight LineNr ctermfg=DarkGrey gui=none
 "colorscheme desert
@@ -59,14 +60,15 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'The-NERD-Tree'
-Plugin 'ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 "Plugin 'Yggdroot/indentLine'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'godlygeek/tabular'
-Plugin 'tamlok/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -114,6 +116,7 @@ let g:airline_symbols.maxlinenr = ''
 " let g:airline_symbols.paste = '∥'
 " let g:airline_symbols.whitespace = 'Ξ'
 
+
 let g:jedi#force_py_version = 3
 "let g:jedi#environment_path="/Users/gus/anaconda3/envs/torch/bin/python"
 let g:jedi#completions_command = "<C-N>"
@@ -121,7 +124,7 @@ let g:jedi#popup_on_dot = 0
 
 
 autocmd FileType python setlocal completeopt-=preview
-
+" Return to last edit position when opening files (You want this!)
 
 " 'Yggdroot/indentLine'
 "let g:indentLine_defaultGroup = 'SpecialKey'
@@ -131,9 +134,14 @@ autocmd FileType python setlocal completeopt-=preview
 
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
-autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
+let g:NERDTreeDirArrowExpandable = '»'
+let g:NERDTreeDirArrowCollapsible = '«'
+"autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
 
+
+let g:WebDevIconsOS = 'Darwin'
+let g:webdevicons_enable_nerdtree = 0
