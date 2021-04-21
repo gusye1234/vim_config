@@ -13,7 +13,6 @@ hi CursorLineNr ctermfg=yellow gui=none
 
 set tabstop=4
 set smartindent
-set mouse=i
 set foldmethod=indent
 set backspace=indent,eol,start
 
@@ -33,9 +32,6 @@ inoremap <C-h> <Home>
 nnoremap <C-l> <End>
 nnoremap <C-h> <Home>
 
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin('~/.vim/bundle/')
@@ -48,27 +44,18 @@ Plugin 'VundleVim/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" Plugin 'tpope/vim-fugitive'
 Plugin 'The-NERD-Tree'
-Plugin 'ctrlpvim/ctrlp.vim'
-"Plugin 'Yggdroot/indentLine'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'ryanoasis/vim-devicons'
+" Plugin 'ctrlpvim/ctrlp.vim'
+" Plugin 'Yggdroot/indentLine'
+" Plugin 'vim-scripts/indentpython.vim'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'davidhalter/jedi-vim'
+" Plugin 'godlygeek/tabular'
+" Plugin 'plasticboy/vim-markdown'
+" Plugin 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -124,7 +111,6 @@ let g:jedi#popup_on_dot = 0
 
 
 autocmd FileType python setlocal completeopt-=preview
-" Return to last edit position when opening files (You want this!)
 
 " 'Yggdroot/indentLine'
 "let g:indentLine_defaultGroup = 'SpecialKey'
@@ -136,7 +122,7 @@ let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
 let g:NERDTreeDirArrowExpandable = '»'
 let g:NERDTreeDirArrowCollapsible = '«'
-"autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
+autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 
 let g:vim_markdown_folding_disabled = 1
