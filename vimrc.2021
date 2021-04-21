@@ -1,18 +1,37 @@
+let $VIRTUAL_ENV = $CONDA_PREFIX
+
 set nu
-colorscheme desert
-set paste
+highlight LineNr ctermfg=DarkGrey gui=none
+"colorscheme desert
+"set paste
 syntax on
+set cursorline
+highlight clear CursorLine
+"highlight CursorLineNR ctermbg=red    
+hi CursorLineNr ctermfg=yellow gui=none
+
 set tabstop=4
 set smartindent
-set mouse=a
+set mouse=i
 set foldmethod=indent
-noremap <C-j> <C-w>h
-noremap <C-k> <C-w>j
-noremap <C-i> <C-w>k
-noremap <C-l> <C-w>l
-nnoremap <space> za
-nnoremap <tab> :bn<CR>
-nnoremap <C-s-tab> :bp<CR>
+set backspace=indent,eol,start
+
+inoremap <C-n> <esc>:NERDTreeToggle<CR>
+inoremap <C-o> <esc>
+inoremap <C-w> <C-w>w
+" noremap means map keys for normal mode, no recursion
+nnoremap <C-o> i
+nnoremap <Tab> gt
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-w> <C-w>w
+nnoremap tb :tabnew<Space>
+" imap means map keys for insert mode, with recursion
+
+inoremap <C-l> <End>
+inoremap <C-h> <Home>
+nnoremap <C-l> <End>
+nnoremap <C-h> <Home>
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -41,11 +60,13 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 Plugin 'The-NERD-Tree'
 Plugin 'ctrlp.vim'
-Plugin 'Yggdroot/indentLine'
+"Plugin 'Yggdroot/indentLine'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'virtualenv.vim'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'tamlok/vim-markdown'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -78,3 +99,27 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
+
+let g:jedi#force_py_version = 3
+"let g:jedi#environment_path="/Users/gus/anaconda3/envs/torch/bin/python"
+let g:jedi#completions_command = "<C-N>"
+let g:jedi#popup_on_dot = 0
+
+
+autocmd FileType python setlocal completeopt-=preview
+
+
+" 'Yggdroot/indentLine'
+"let g:indentLine_defaultGroup = 'SpecialKey'
+"let g:indentLine_char_list = ''
+"let g:indentLine_setColors = 0
+
+
+let NERDTreeDirArrows=1
+let NERDTreeMinimalUI=1
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
+
+
+
