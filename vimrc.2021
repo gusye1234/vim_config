@@ -8,7 +8,7 @@ highlight LineNr ctermfg=DarkGrey gui=none
 syntax on
 set cursorline
 highlight clear CursorLine
-"highlight CursorLineNR ctermbg=red    
+"highlight CursorLineNR ctermbg=red
 hi CursorLineNr ctermfg=yellow gui=none
 
 set tabstop=4
@@ -16,21 +16,25 @@ set smartindent
 set foldmethod=indent
 set backspace=indent,eol,start
 
-inoremap <C-n> <esc>:NERDTreeToggle<CR>
-inoremap <C-o> <esc>
+inoremap <C-i> <esc>
 inoremap <C-w> <C-w>w
 " noremap means map keys for normal mode, no recursion
-nnoremap <C-o> i
 nnoremap <Tab> gt
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-w> <C-w>w
 nnoremap tb :tabnew<Space>
+" by defualt, now '\t' will to a new tab for the definition
+nnoremap <Leader>t :tab<Space>split<CR>:call<Space>jedi#goto_assignments()<CR>
 " imap means map keys for insert mode, with recursion
 
 inoremap <C-l> <End>
 inoremap <C-h> <Home>
 nnoremap <C-l> <End>
 nnoremap <C-h> <Home>
+
+
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -45,17 +49,16 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 
-" Plugin 'tpope/vim-fugitive'
-Plugin 'The-NERD-Tree'
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'Yggdroot/indentLine'
-" Plugin 'vim-scripts/indentpython.vim'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'davidhalter/jedi-vim'
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'ryanoasis/vim-devicons'
+Plugin 'tpope/vim-fugitive'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'preservim/nerdtree'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'ryanoasis/vim-devicons'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -120,14 +123,17 @@ autocmd FileType python setlocal completeopt-=preview
 
 let NERDTreeDirArrows=1
 let NERDTreeMinimalUI=1
-let g:NERDTreeDirArrowExpandable = '»'
-let g:NERDTreeDirArrowCollapsible = '«'
+let g:NERDTreeDirArrowExpandable = '|'
+let g:NERDTreeDirArrowCollapsible = '<'
 autocmd BufEnter * if 0 == len(filter(range(1, winnr('$')), 'empty(getbufvar(winbufnr(v:val), "&bt"))')) | qa! | endif
 
 
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_no_default_key_mappings = 1
 
-
+let g:conceallevel=3
 let g:WebDevIconsOS = 'Darwin'
-let g:webdevicons_enable_nerdtree = 0
+let g:webdevicons_enable_nerdtree = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ''
